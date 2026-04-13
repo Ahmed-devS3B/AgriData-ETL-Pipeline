@@ -1,0 +1,1136 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/12/2026 3:58:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="MOSCOW"
+  DTS:CreatorName="MOSCOW\Moscow"
+  DTS:DTSID="{7AEC0655-25F7-4AC3-82A7-78595EEC2A67}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Dist1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{B6685698-95ED-4DAB-9094-C2BC901368A0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{739122AD-B0FF-44DD-AF29-AC0414CD356C}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Moscow\OneDrive\Desktop\DSS\Project\Datasets\Disti#1.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost\SQLEXPRESS.SSISTask]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{529A17F9-4817-4F0E-80F0-F12080F265FB}"
+      DTS:ObjectName="localhost\SQLEXPRESS.SSISTask">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=SSISTask;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{529A17F9-4817-4F0E-80F0-F12080F265FB}localhost\SQLEXPRESS.SSISTask;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{59E7CEAF-B7F7-49CC-B188-12146942E70F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Disti #1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4A573662-3EF7-40DF-A3A0-F588F3FC8604}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Disti #1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Disti #1\CropData DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CropData DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CropData]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Disti #1\CropData DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost\SQLEXPRESS.SSISTask]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost\SQLEXPRESS.SSISTask]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Location]" />
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[Crop]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Crop"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Crop]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Crop]" />
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[Soil_Moisture]"
+                      cachedDataType="r8"
+                      cachedName="Soil_Moisture"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Soil_Moisture]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Soil_Moisture]" />
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[Temperature_C]"
+                      cachedDataType="r8"
+                      cachedName="Temperature_C"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Temperature]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Temperature_C]" />
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[Yield_kg_per_hectare]"
+                      cachedDataType="r8"
+                      cachedName="Yield_kg_per_hectare"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Kg_Per_Hectare]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Yield_kg_per_hectare]" />
+                    <inputColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].Columns[formatted_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="formatted_date"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[formatted_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="50"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="100"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Crop]"
+                      dataType="wstr"
+                      length="50"
+                      name="Crop" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Soil_Moisture]"
+                      dataType="r8"
+                      name="Soil_Moisture" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Temperature]"
+                      dataType="r8"
+                      name="Temperature" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input].ExternalColumns[Kg_Per_Hectare]"
+                      dataType="r8"
+                      name="Kg_Per_Hectare" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\CropData DB.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\CropData DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\CropData DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Disti #1\CropData DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\CropData DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Disti #1\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Disti #1\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Disti #1\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Disti #1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Output].Columns[transformed_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Output].Columns[transformed_date]"
+                      name="transformed_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Disti #1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Disti #1\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Disti #1\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Disti #1\Derived Column.Inputs[Derived Column Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Disti #1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Derived Column.Outputs[Derived Column Output].Columns[formatted_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Disti #1\Derived Column.Outputs[Derived Column Output].Columns[formatted_date]"
+                      name="formatted_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]},5,4) + "-" + [SUBSTRING](#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]},3,2) + "-" + [SUBSTRING](#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]},1,2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(Date,5,4) + "-" + SUBSTRING(Date,3,2) + "-" + SUBSTRING(Date,1,2)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Disti #1\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Disti #1\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Disti #1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Disti #1\Disti#1"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Disti#1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Disti #1\Disti#1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Location]"
+                      name="Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Crop]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Crop]"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Crop]"
+                      name="Crop"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Soil_Moisture]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Soil_Moisture]"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Soil_Moisture]"
+                      name="Soil_Moisture"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Temperature_C]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Temperature_C]"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Temperature_C]"
+                      name="Temperature_C"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Yield_kg_per_hectare]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Yield_kg_per_hectare]"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Yield_kg_per_hectare]"
+                      name="Yield_kg_per_hectare"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Location" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Crop]"
+                      dataType="wstr"
+                      length="255"
+                      name="Crop" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Soil_Moisture]"
+                      dataType="r8"
+                      name="Soil_Moisture" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Temperature_C]"
+                      dataType="r8"
+                      name="Temperature_C" />
+                    <externalMetadataColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].ExternalColumns[Yield_kg_per_hectare]"
+                      dataType="r8"
+                      name="Yield_kg_per_hectare" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Location]"
+                      name="Location" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Crop]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Crop]"
+                      name="Crop" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Soil_Moisture]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Soil_Moisture]"
+                      name="Soil_Moisture" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Temperature_C]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Temperature_C]"
+                      name="Temperature_C" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Yield_kg_per_hectare]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[Yield_kg_per_hectare]"
+                      name="Yield_kg_per_hectare" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Disti #1\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Disti #1\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Disti #1\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Disti #1\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Disti #1\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Location"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Location]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Crop]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Crop"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Crop]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Soil_Moisture]"
+                      cachedDataType="r8"
+                      cachedName="Soil_Moisture"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Soil_Moisture]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Temperature_C]"
+                      cachedDataType="r8"
+                      cachedName="Temperature_C"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Temperature_C]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[Yield_kg_per_hectare]"
+                      cachedDataType="r8"
+                      cachedName="Yield_kg_per_hectare"
+                      lineageId="Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Yield_kg_per_hectare]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[transformed_date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="transformed_date"
+                      lineageId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Output].Columns[transformed_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Disti #1\Sort.Inputs[Sort Input].Columns[formatted_date]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="formatted_date"
+                      lineageId="Package\Disti #1\Derived Column.Outputs[Derived Column Output].Columns[formatted_date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Disti #1\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Date]"
+                      name="Date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Location]"
+                      name="Location">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Location]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Crop]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Crop]"
+                      name="Crop">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Crop]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Soil_Moisture]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Soil_Moisture]"
+                      name="Soil_Moisture">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Soil_Moisture]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Temperature_C]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Temperature_C]"
+                      name="Temperature_C">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Temperature_C]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Yield_kg_per_hectare]"
+                      dataType="r8"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[Yield_kg_per_hectare]"
+                      name="Yield_kg_per_hectare">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Disti#1.Outputs[Excel Source Output].Columns[Yield_kg_per_hectare]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[transformed_date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[transformed_date]"
+                      name="transformed_date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Data Conversion.Outputs[Data Conversion Output].Columns[transformed_date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[formatted_date]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Disti #1\Sort.Outputs[Sort Output].Columns[formatted_date]"
+                      name="formatted_date"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Disti #1\Derived Column.Outputs[Derived Column Output].Columns[formatted_date]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Disti #1.Paths[Data Conversion Output]"
+              endId="Package\Disti #1\Derived Column.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Disti #1\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Disti #1.Paths[Derived Column Output]"
+              endId="Package\Disti #1\Sort.Inputs[Sort Input]"
+              name="Derived Column Output"
+              startId="Package\Disti #1\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Disti #1.Paths[Excel Source Output]"
+              endId="Package\Disti #1\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Disti #1\Disti#1.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Disti #1.Paths[Row Count Output 1]"
+              endId="Package\Disti #1\CropData DB.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Disti #1\Row Count.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\Disti #1.Paths[Sort Output]"
+              endId="Package\Disti #1\Row Count.Inputs[Row Count Input 1]"
+              name="Sort Output"
+              startId="Package\Disti #1\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Disti #1"
+          TopLeft="278.333318125871,90.1333327065574" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Disti #1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Disti #1\Data Conversion"
+          TopLeft="205.833322087097,25.1333331585592" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Disti #1\Row Count"
+          TopLeft="439.166642671659,188.066665358874" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Disti #1\Derived Column"
+          TopLeft="201.666655648086,110.066665901277" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\Disti #1\CropData DB"
+          TopLeft="679.166629558638,183.733332055675" />
+        <NodeLayout
+          Size="110.4,41.6"
+          Id="Package\Disti #1\Disti#1"
+          TopLeft="489.999973227582,25.1333331585593" />
+        <EdgeLayout
+          Id="Package\Disti #1.Paths[Row Count Output 1]"
+          TopLeft="568.766642671659,206.699998707275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="110.399986886979,0"
+              Start="0,0"
+              End="102.899986886979,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="102.899986886979,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="43.4499934434897,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Disti #1.Paths[Excel Source Output]"
+          TopLeft="489.999973227582,45.9333331585593">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-128.166651140485,0"
+              Start="0,0"
+              End="-120.666651140485,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-120.666651140485,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-68.3333255702425,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Disti #1.Paths[Data Conversion Output]"
+          TopLeft="280.949988867591,66.7333331585592">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.3333327427175"
+              Start="0,0"
+              End="0,35.8333327427175">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.8333327427175" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.91666637135876,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Disti #1\Sort"
+          TopLeft="224.166654418741,191.533332001434" />
+        <EdgeLayout
+          Id="Package\Disti #1.Paths[Derived Column Output]"
+          TopLeft="275.516655033413,151.666665901277">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.8666661001577"
+              Start="0,0"
+              End="0,32.3666661001577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.3666661001577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.18333305007887,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Disti #1.Paths[Sort Output]"
+          TopLeft="321.76665441874,210.599998680154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.399988252918,0"
+              Start="0,0"
+              End="109.899988252918,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="109.899988252918,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.9499941264592,5,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Disti #1\CropData DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Disti #1\Disti#1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
