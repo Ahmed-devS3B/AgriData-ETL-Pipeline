@@ -390,7 +390,7 @@
 
 # \## 📌 Final Note
 
-# This project reflects a real-world \*\*Data Engineering pipeline\*\* and demonstrates strong understanding of:
+# This project reflects a \*\*Data Engineering pipeline\*\* and demonstrates strong understanding of:
 
 # \- ETL Processes  
 
